@@ -31,10 +31,14 @@ export const loadSystemConfig = async () => {
     }
 };
 
-export const loadPublicConfig = async () => {
+export const loadPublicConfig = async (gnDivision) => {
     try {
+        const params = { _ts: Date.now() };
+        if (gnDivision) {
+            params.gnDivision = gnDivision;
+        }
         const response = await axios.get(`${API_URL}/system/public-config`, {
-            params: { _ts: Date.now() },
+            params,
             headers: { 'Cache-Control': 'no-cache' }
         });
         localStorage.setItem('publicConfig', JSON.stringify(response.data));
