@@ -1,0 +1,39 @@
+const mongoose = require('mongoose');
+
+const noticeSchema = new mongoose.Schema({
+    title: { 
+        type: String, 
+        required: true 
+    },
+    desc_si: { 
+        type: String, 
+        required: true  
+    },
+    desc_ta: { 
+        type: String, 
+        default: '' 
+    },
+    desc_en: { 
+        type: String, 
+        default: '' 
+    },
+    description: { 
+        type: String 
+    },
+    category: { 
+        type: String, 
+        enum: ['General', 'Welfare', 'Meeting', 'Emergency'], 
+        default: 'General' 
+    },
+    postedDate: { 
+        type: Date, 
+        default: Date.now 
+    },
+    priority: { 
+        type: String, 
+        enum: ['Low', 'Medium', 'High'], 
+        default: 'Medium' 
+    }
+});
+
+module.exports = mongoose.model('Notice', noticeSchema);
