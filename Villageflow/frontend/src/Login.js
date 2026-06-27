@@ -29,7 +29,7 @@ const translations = {
         tagline: "Official Digital Gateway for Rural Administrative Services",
         officialAccess: "Authorized Government Access",
         infoProtected: "Session secured via end-to-end 256-bit encryption standards.",
-        auditText: "This digital gateway is regulated by the Government of Sri Lanka. Unauthorized login attempts are strictly prohibited, logged, and subject to legal prosecution under the Computer Crimes Act.",
+        auditText: "This digital system is protected by secure access controls. Unauthorized access attempts are logged and may result in legal action in accordance with applicable laws and regulations.",
         privacyPolicy: "Privacy Policy",
         termsOfService: "Terms of Service",
         mfaTitle: "Multi-Factor Authentication",
@@ -62,7 +62,7 @@ const translations = {
         tagline: "ග්‍රාමීය පරිපාලන සේවා සඳහා වන නිල රාජ්‍ය ඩිජිටල් ද්වාරය",
         officialAccess: "නිල රාජ්‍ය පිවිසුම",
         infoProtected: "සැසිය බිටු 256 ක සංකේතන ප්‍රමිතීන් යටතේ සුරක්ෂිත කර ඇත.",
-        auditText: "මෙම ඩිජිටල් ද්වාරය ශ්‍රී ලංකා රජය මඟින් පාලනය වේ. අනවසරයෙන් ඇතුළු වීමට උත්සාහ කිරීම දැඩි ලෙස තහනම් වන අතර, පරිගණක අපරාධ පනත යටතේ නඩු පැවරීමට යටත් වේ.",
+        auditText: "මෙම ඩිජිටල් පද්ධතිය ආරක්ෂිත ප්‍රවේශ පාලනයක් යටතේ ක්‍රියාත්මක වේ. අනවසර ප්‍රවේශ උත්සාහයන් වාර්තා කරනු ලබන අතර, අදාළ නීති හා රෙගුලාසි අනුව නීතිමය ක්‍රියාමාර්ග ගැනීමට හැකිය.",
         privacyPolicy: "පෞද්ගලිකත්ව ප්‍රතිපත්තිය",
         termsOfService: "සේවා කොන්දේසි",
         mfaTitle: "ද්වි-සාධක සත්‍යාපනය (MFA)",
@@ -95,7 +95,7 @@ const translations = {
         tagline: "கிராமப்புற நிர்வாக சேவைகளுக்கான அதிகாரப்பூர்வ அரசாங்க டிஜிட்டல் தளம்",
         officialAccess: "அங்கீகரிக்கப்பட்ட அரசாங்க அணுகல்",
         infoProtected: "தரவு பரிமாற்றம் 256-பிட் குறியாக்க பாதுகாப்பு மூலம் பாதுகாக்கப்படுகிறது.",
-        auditText: "இந்த டிஜிட்டல் தளம் இலங்கை அரசாங்கத்தால் கட்டுப்படுத்தப்படுகிறது. அங்கீகரிக்கப்படாத அணுகல் முயற்சிகள் தடைசெய்யப்பட்டுள்ளன, கண்காணிக்கப்படுகின்றன மற்றும் சட்ட நடவடிக்கைக்கு உட்பட்டவை.",
+        auditText: "இந்த டிஜிட்டல் அமைப்பு பாதுகாப்பான அணுகல் கட்டுப்பாடுகளால் பாதுகாக்கப்படுகிறது. அங்கீகரிக்கப்படாத அணுகல் முயற்சிகள் பதிவுசெய்யப்படும் மற்றும் பொருந்தக்கூடிய சட்டங்கள் மற்றும் விதிமுறைகளின்படி சட்ட நடவடிக்கை எடுக்கப்படலாம்.",
         privacyPolicy: "தனியுரிமைக் கொள்கை",
         termsOfService: "சேவை விதிமுறைகள்",
         mfaTitle: "இரு காரணி அங்கீகாரம் (MFA)",
@@ -599,15 +599,14 @@ function Login({ onLoginSuccess, onSwitchToRegister }) {
                                             }}
                                             required 
                                         />
-                                        <button 
-                                            type="button"
+                                        <div 
                                             onClick={() => setShowPassword(!showPassword)} 
-                                            style={styles.eyeBtn}
-                                            className="login-eye-btn"
+                                            style={{...styles.eyeBtn, cursor: 'pointer', zIndex: 10}}
+                                            role="button"
                                             aria-label={showPassword ? "Hide password" : "Show password"}
                                         >
                                             {showPassword ? <EyeOff size={18} color="#64748B" /> : <Eye size={18} color="#64748B" />}
-                                        </button>
+                                        </div>
                                     </div>
                                     {!credentials.password && (
                                         <span style={styles.hintText}>{t.passwordHint}</span>
@@ -903,6 +902,22 @@ function Login({ onLoginSuccess, onSwitchToRegister }) {
                         border: none !important;
                         box-shadow: none !important;
                         outline: none !important;
+                    }
+
+                    button.login-eye-btn {
+                        position: absolute !important;
+                        right: 14px !important;
+                        width: 32px !important;
+                        height: 32px !important;
+                        min-height: auto !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                        background: transparent !important;
+                        border: none !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        z-index: 2 !important;
                     }
                     
                     .login-forgot-link:hover,
@@ -1247,6 +1262,8 @@ const styles = {
     eyeBtn: { 
         position: 'absolute', 
         right: '14px', 
+        width: '32px',
+        height: '32px',
         border: 'none', 
         background: 'transparent', 
         cursor: 'pointer',
@@ -1254,7 +1271,8 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 0,
-        outline: 'none'
+        outline: 'none',
+        zIndex: 2
     },
     validationIcon: { 
         position: 'absolute', 
