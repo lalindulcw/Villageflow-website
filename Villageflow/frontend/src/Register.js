@@ -935,16 +935,16 @@ function Register({ onSwitchToLogin }) {
                                                 onFocus={() => setFocusedInput('password')}
                                                 onBlur={() => setFocusedInput(null)}
                                                 placeholder="••••••••"
-                                            />
-                                            <button 
-                                                type="button"
-                                                onClick={() => setShowPassword(!showPassword)} 
-                                                style={styles.eyeBtn}
-                                                className="register-eye-btn"
-                                            >
-                                                {showPassword ? <EyeOff size={18} color="#6B7280" /> : <Eye size={18} color="#6B7280" />}
-                                            </button>
-                                        </div>
+                                             />
+                                             <div 
+                                                 onClick={() => setShowPassword(!showPassword)} 
+                                                 style={{...styles.eyeBtn, cursor: 'pointer', zIndex: 10}}
+                                                 role="button"
+                                                 aria-label={showPassword ? "Hide password" : "Show password"}
+                                             >
+                                                 {showPassword ? <EyeOff size={18} color="#6B7280" /> : <Eye size={18} color="#6B7280" />}
+                                             </div>
+                                         </div>
                                         {formErrors.password && <span style={styles.errorText}>{formErrors.password}</span>}
                                     </div>
 
@@ -963,14 +963,14 @@ function Register({ onSwitchToLogin }) {
                                                 onBlur={() => setFocusedInput(null)}
                                                 placeholder="••••••••"
                                             />
-                                            <button 
-                                                type="button"
-                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
-                                                style={styles.eyeBtn}
-                                                className="register-eye-btn"
-                                            >
-                                                {showConfirmPassword ? <EyeOff size={18} color="#6B7280" /> : <Eye size={18} color="#6B7280" />}
-                                            </button>
+                                            <div 
+                                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
+                                                 style={{...styles.eyeBtn, cursor: 'pointer', zIndex: 10}}
+                                                 role="button"
+                                                 aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                                             >
+                                                 {showConfirmPassword ? <EyeOff size={18} color="#6B7280" /> : <Eye size={18} color="#6B7280" />}
+                                             </div>
                                         </div>
                                         {formErrors.confirmPassword && <span style={styles.errorText}>{formErrors.confirmPassword}</span>}
                                     </div>
@@ -1570,14 +1570,17 @@ const styles = {
     eyeBtn: { 
         position: 'absolute', 
         right: '16px', 
+        width: '32px',
+        height: '32px',
         border: 'none', 
         background: 'transparent', 
-        cursor: 'pointer',
+        cursor: 'pointer', 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 0,
-        outline: 'none'
+        outline: 'none',
+        zIndex: 2
     },
     validIcon: { 
         position: 'absolute', 
