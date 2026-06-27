@@ -1,0 +1,1043 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors */
+  --primary-color: #8B0000;
+  --primary-hover: #5E0000;
+  --secondary-color: #D4AF37;
+  --secondary-hover: #C59B27;
+  
+  /* Severity / Feedback Colors */
+  --success-color: #16a34a;
+  --success-bg: #dcfce7;
+  --warning-color: #ea580c;
+  --warning-bg: #ffedd5;
+  --danger-color: #dc2626;
+  --danger-bg: #fee2e2;
+  --info-color: #2563eb;
+  --info-bg: #dbeafe;
+  
+  /* Neutral Color Scale */
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #111827;
+  --neutral-900: #0f172a;
+  
+  /* Typography Scale */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Borders and Shadow Scales */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/*Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--secondary-color) !important;
+  outline-offset: 2px !important;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8FAFC !important;
+  color: #111827 !important;
+}
+
+/* Global Industry-Level overrides for Input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  color: #111827 !important;
+  background-color: #FFFFFF !important;
+  transition: all 200ms ease !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15) !important;
+  outline: none !important;
+}
+
+/* Global Card Styling overrides */
+.card,
+.stat-card,
+.notice-card,
+.welfare-card,
+.app-card,
+.profile-sidebar,
+.profile-main,
+.dashboard-wrapper > div,
+div[class*="Card"] {
+  background-color: #FFFFFF !important;
+  border-radius: 16px !important;
+  border: 1px solid #E5E7EB !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.03) !important;
+  padding: 24px !important;
+  transition: all 200ms ease !important;
+}
+
+/* Global Table Styling overrides */
+table, .table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background-color: #FFFFFF !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid #E5E7EB !important;
+}
+
+table th {
+  background-color: #F8FAFC !important;
+  color: #6B7280 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 14px 16px !important;
+  border-bottom: 1.5px solid #E5E7EB !important;
+}
+
+table td {
+  padding: 14px 16px !important;
+  font-size: 14px !important;
+  color: #111827 !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+table tr:hover {
+  background-color: #F8FAFC !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* App Styles */
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ChatBot Specific Styles */
+
+/* Fix for the border/borderBottom conflict in ChatBot */
+.activeLink {
+  background: transparent;
+  border: none;
+  color: #D4AF37;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  border-bottom: 2px solid #D4AF37;
+  padding: 5px 10px;
+}
+
+/* Ensure no shorthand/non-shorthand conflicts for links */
+.nav-link,
+button.link,
+a.link {
+  border: none;
+  border-bottom: none;
+}
+
+/* ChatBot animation keyframes */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ChatBot styles */
+.chat-button {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chat-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(128, 0, 0, 0.3);
+}
+
+.chat-window {
+  animation: slideUp 0.3s ease-out;
+}
+
+.suggestion-btn {
+  transition: all 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  background: #8B0000;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.suggestion-btn:hover svg {
+  color: white;
+}
+
+.icon-btn {
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.send-btn {
+  transition: opacity 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.chat-input:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.1);
+}
+
+.speak-btn {
+  transition: opacity 0.2s;
+}
+
+.speak-btn:hover {
+  opacity: 0.7;
+}
+
+/*  Global Scrollbar Styles  */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Loading Spinner*/
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #8B0000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+/*  Utility Classes  */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 2rem; }
+
+/* MOBILE RESPONSIVE DESIGN*/
+
+/* Tablet & Medium Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+  /* Dashboard Layout Fix */
+  .dashboard-wrapper {
+    flex-direction: column !important;
+  }
+  
+  /* Stats Cards - 2 per row */
+  .stats-row,
+  div[class*="statsRow"],
+  div[class*="stats-row"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  
+  /* Reduce padding */
+  .container, div[class*="container"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  /* Form rows stack */
+  .form-row, div[class*="formRow"] {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+}
+
+/* Mobile Landscape & Portrait (max-width: 768px) */
+@media (max-width: 768px) {
+  /* LAYOUT FIXES */
+  
+  /* Force known grid layouts to stack vertically */
+  .grid, .stats-grid, .cards-grid,
+  .inventory-main-grid, .reg-grid, .filterGrid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Make known flex rows stack */
+  .flex-row, .header-row, .header-left-group, .header-right-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* Sidebar hidden - use bottom nav instead */
+  .sidebar, div[class*="sidebar"] {
+    display: none !important;
+  }
+  
+  /* Main content takes full width */
+  .main-content, div[class*="mainContent"] {
+    margin-left: 0 !important;
+    padding: 15px !important;
+    width: 100% !important;
+  }
+  
+  /* STATS CARDS */
+  .stats-row, div[class*="statsRow"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  .stat-card, div[class*="statCard"] {
+    padding: 12px !important;
+  }
+  
+  .stat-card h3, div[class*="statValue"] {
+    font-size: 18px !important;
+  }
+  
+  .stat-card span, div[class*="statLabel"] {
+    font-size: 11px !important;
+  }
+  
+  /*  TABLES - Make scrollable horizontally */
+  table, .table, div[class*="tableWrapper"] {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  table td, table th {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Hide less important columns on mobile (only when explicitly marked) */
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  /*FORMS*/
+  input, select, textarea, button {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+  
+  input, select, textarea {
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Form groups stack */
+  .input-group, div[class*="inputGroup"] {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* BUTTONS */
+  button:not(.chat-button):not(.chat-window button):not(.mobile-top-nav button):not(.mobile-bottom-nav button),
+  .btn,
+  .button {
+    min-height: 44px !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    margin: 4px 0 !important;
+  }
+  
+  /* Button groups stack */
+  .button-group, .btn-group, div[class*="buttonGroup"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /*CARDS */
+  .card, div[class*="Card"], .notice-card {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .card-title, h2, h3 {
+    font-size: 18px !important;
+  }
+  
+  /* NAVBAR*/
+  nav, .navbar, .nav-bar {
+    flex-direction: column !important;
+    padding: 10px !important;
+  }
+  
+  nav button, .navbar button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /*  MODALS  */
+  .modal, .modal-content, div[class*="modalContent"] {
+    width: 95% !important;
+    max-width: 95% !important;
+    margin: 10px !important;
+    max-height: 90vh !important;
+  }
+  
+  /*  CHATBOT  */
+  .chat-window {
+    width: 95vw !important;
+    height: auto !important;
+    max-height: calc(100vh - 92px) !important;
+    bottom: 12px !important;
+    right: 12px !important;
+    left: auto !important;
+  }
+  
+  .chat-button {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+  
+  .chat-button svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  /*  TABS  */
+  .tabs, .tab-container, div[class*="tabContainer"] {
+    flex-wrap: wrap !important;
+  }
+  
+  .tab, .tab-btn {
+    flex: 1 1 auto !important;
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+  
+  /*  FILTERS BAR  */
+  .filters-bar, div[class*="filtersBar"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .filters-bar input, .filters-bar select {
+    width: 100% !important;
+  }
+  
+  /*  PROFILE PAGE  */
+  .profile-container, div[class*="profileContainer"] {
+    flex-direction: column !important;
+  }
+  
+  .profile-sidebar, .profile-main {
+    width: 100% !important;
+  }
+  
+  /*  CERTIFICATES PAGE  */
+  .cert-grid, .certificates-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /*  WELFARE PAGE  */
+  .welfare-table-container {
+    overflow-x: auto !important;
+  }
+  
+  /*  INVENTORY PAGE  */
+  .inventory-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /*  NOTICE PAGE  */
+  .notices-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /*  APPOINTMENT PAGE  */
+  .calendar-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+  
+  .react-calendar {
+    width: 100% !important;
+    min-width: 300px !important;
+  }
+  
+  /*  LANGUAGE SELECTOR  */
+  .lang-bar, div[class*="langBar"] {
+    justify-content: center !important;
+    margin-bottom: 15px !important;
+  }
+  
+  /*  HEADER  */
+  .header, .main-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 15px !important;
+  }
+  
+  /*  PAGINATION  */
+  .pagination {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  .pagination button {
+    width: auto !important;
+    min-width: 80px !important;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Single column stats */
+  .stats-row, div[class*="statsRow"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Font sizes smaller */
+  body, p, li, span {
+    font-size: 13px !important;
+  }
+  
+  h1 {
+    font-size: 22px !important;
+  }
+  
+  h2 {
+    font-size: 18px !important;
+  }
+  
+  h3 {
+    font-size: 16px !important;
+  }
+  
+  /* Even smaller padding */
+  .card, div[class*="Card"] {
+    padding: 12px !important;
+  }
+  
+  /* ChatBot full width on very small screens */
+  .chat-window {
+    width: 98vw !important;
+    max-height: calc(100vh - 88px) !important;
+    right: 1vw !important;
+    bottom: 8px !important;
+    left: 1vw !important;
+    border-radius: 16px !important;
+  }
+  
+  .suggestion-btn {
+    font-size: 10px !important;
+    padding: 6px 10px !important;
+  }
+  
+  .quickSuggestions {
+    padding: 8px 12px !important;
+  }
+  
+  /* Keep table columns visible by default */
+  
+  /* Stack action buttons */
+  .action-buttons, div[class*="actionGroup"] {
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+  
+  .action-buttons button {
+    width: 100% !important;
+  }
+  
+  /* Modal close button position fix */
+  .modal-header {
+    flex-direction: row !important;
+  }
+  
+  /* Touch-friendly spacing */
+  .clickable, [onClick], [role="button"] {
+    min-height: 44px !important;
+  }
+  
+  /* Form labels */
+  label {
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+  }
+}
+
+/*  APP NAV + CHATBOT CLEARNESS  */
+.desktop-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+
+.mobile-top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+}
+
+.mobile-menu-dropdown {
+  z-index: 1190;
+}
+
+.app-route-content.with-mobile-nav {
+  padding-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .chat-window {
+    z-index: 2000 !important;
+    max-height: calc(100vh - 88px) !important;
+    height: auto !important;
+  }
+
+  .chat-button {
+    z-index: 1999 !important;
+    bottom: 18px !important;
+  }
+}
+
+/* Extra Small Devices (max-width: 360px) */
+@media (max-width: 360px) {
+  /* Smallest screens */
+  .stat-card h3, div[class*="statValue"] {
+    font-size: 16px !important;
+  }
+  
+  button, .btn {
+    font-size: 12px !important;
+    padding: 10px !important;
+  }
+  
+  .card-title {
+    font-size: 14px !important;
+  }
+  
+  /* Hide even more */
+  .hide-on-xs {
+    display: none !important;
+  }
+}
+
+/*  MOBILE BOTTOM NAVIGATION  */
+/* Add this class to create bottom nav for mobile */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #8B0000 !important;
+    padding: 8px 12px !important;
+    justify-content: space-around !important;
+    z-index: 1000 !important;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
+  }
+  
+  .mobile-bottom-nav button {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255,255,255,0.7) !important;
+    padding: 8px !important;
+    font-size: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    min-height: auto !important;
+  }
+  
+  .mobile-bottom-nav button.active {
+    color: #D4AF37 !important;
+  }
+  
+  /* Add padding to bottom to prevent content being hidden under nav */
+  body {
+    padding-bottom: 60px !important;
+  }
+}
+
+/*  TOUCH-FRIENDLY IMPROVEMENTS  */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  button, 
+  a, 
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  .clickable {
+    min-height: 44px !important;
+    cursor: pointer !important;
+  }
+
+  /* Keep chatbot controls compact and clickable */
+  .chat-window button {
+    min-height: auto !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  
+  /* Remove hover effects that don't work well on touch */
+  .suggestion-btn:hover {
+    transform: none !important;
+  }
+  
+  /* Better focus indicators */
+  :focus {
+    outline: 2px solid #8B0000 !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/*  PRINT STYLES  */
+@media print {
+  .no-print, .chat-button, .mobile-bottom-nav, button, nav {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .card, .container {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
+
+/*  SAFE AREA FOR NOTCHED PHONES  */
+@supports (padding: max(0px)) {
+  .mobile-bottom-nav {
+    padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    padding-left: max(12px, env(safe-area-inset-left)) !important;
+    padding-right: max(12px, env(safe-area-inset-right)) !important;
+  }
+  
+  body {
+    padding-bottom: max(60px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/*  PAGE-SPECIFIC RESPONSIVE IMPROVEMENTS  */
+@media (max-width: 900px) {
+  .welfare-page {
+    padding: 16px !important;
+  }
+
+  .welfare-header-section,
+  .welfare-filters-bar,
+  .welfare-form-row,
+  .welfare-form-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .welfare-report-btns {
+    margin-left: 0 !important;
+    width: 100% !important;
+    justify-content: stretch !important;
+  }
+
+  .welfare-report-btns button {
+    flex: 1 1 auto !important;
+  }
+
+  .inventory-page {
+    padding: 16px !important;
+  }
+
+  .inventory-header,
+  .inventory-header-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .inventory-tabs-row {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 10px !important;
+  }
+
+  .inventory-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .inventory-stats-row > div {
+    min-width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 12px 0 !important;
+  }
+
+  .system-config-page {
+    padding: 18px !important;
+  }
+
+  .system-config-header,
+  .system-config-actions,
+  .system-config-tabs,
+  .system-config-add-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .system-config-content {
+    padding: 20px !important;
+  }
+
+  .system-config-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .verify-certificate-card,
+  .verify-profile-card {
+    padding: 20px !important;
+    max-width: 100% !important;
+  }
+
+  .verify-certificate-row,
+  .verify-profile-detail-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .verify-certificate-info,
+  .verify-profile-details-grid {
+    padding: 12px !important;
+  }
+}
+
+/*  REMAINING FRONTEND RESPONSIVE FIXES  */
+@media (max-width: 900px) {
+  .notice-page .header-bar,
+  .appointment-page .header-row,
+  .appointment-page .flex-container,
+  .gn-dashboard .header-left-group,
+  .gn-dashboard .header-right-group,
+  .gn-dashboard .formSection,
+  .gn-dashboard .reg-grid {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .appointment-page .calendar-wrapper {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+  }
+
+  .appointment-page .app-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .appointment-page .status-section {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .gn-dashboard .stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gn-dashboard .table {
+    min-width: 780px !important;
+  }
+
+  .welfare-page-wrapper {
+    padding: 14px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .notice-page .title,
+  .appointment-page .main-title,
+  .gn-dashboard .header,
+  .welfare-card .section-title {
+    font-size: 18px !important;
+  }
+
+  .gn-dashboard .stats-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .welfare-input,
+  .welfare-select,
+  .appointment-page .input,
+  .appointment-page .select {
+    font-size: 16px !important;
+  }
+
+  .welfare-card,
+  .applications-card,
+  .appointment-page .form-section,
+  .notice-page .notice-form {
+    padding: 16px !important;
+  }
+
+  .application-header,
+  .application-details,
+  .application-actions {
+    width: 100% !important;
+  }
+
+  .application-actions .edit-btn,
+  .application-actions .delete-btn {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+}
