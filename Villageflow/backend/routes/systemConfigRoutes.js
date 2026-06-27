@@ -32,8 +32,55 @@ const DEFAULT_CONFIG = {
 // 1. Public config
 router.get('/public-config', async (req, res) => {
     try {
-        let config = await SystemConfig.findOne().sort({ updatedAt: -1 });
-        if (!config) return res.json(DEFAULT_CONFIG);
+        const { gnDivision } = req.query;
+        let config = null;
+
+        if (gnDivision) {
+            // Find the officer registered under this GN division
+            const officer = await User.findOne({ 
+                role: 'officer', 
+                gnDivision: { $regex: new RegExp(`^${gnDivision.trim()}$`, 'i') } 
+            });
+
+            if (officer) {
+                const configDoc = await SystemConfig.findOne({ gramaNiladhariId: officer._id });
+                if (configDoc) {
+                    config = configDoc.toObject();
+                    // Merge and fallback empty config fields with officer's profile details
+                    if (!config.general) config.general = {};
+                    config.general.gramaNiladhariName = config.general.gramaNiladhariName || officer.fullName || 'සඳහන් කර නැත';
+                    config.general.gramaNiladhariDivision = config.general.gramaNiladhariDivision || officer.gnDivision || 'සඳහන් කර නැත';
+                    config.general.gnDivision = config.general.gnDivision || officer.gnDivision || 'සඳහන් කර නැත';
+                    config.general.contactNumber = config.general.contactNumber || officer.mobileNumber || 'තොරතුරු ලබා දී නැත';
+                    config.general.officeAddress = config.general.officeAddress || officer.address || 'සඳහන් කර නැත';
+                    config.general.officeHours = config.general.officeHours || '8.30 AM - 4.15 PM';
+                } else {
+                    // Officer exists but hasn't customized SystemConfig. Fallback to their user details.
+                    config = {
+                        ...DEFAULT_CONFIG,
+                        general: {
+                            officeHours: '8.30 AM - 4.15 PM',
+                            contactNumber: officer.mobileNumber || 'තොරතුරු ලබා දී නැත',
+                            gramaNiladhariName: officer.fullName || 'සඳහන් කර නැත',
+                            gramaNiladhariDivision: officer.gnDivision || 'සඳහන් කර නැත',
+                            gnDivision: officer.gnDivision || 'සඳහන් කර නැත',
+                            officeAddress: officer.address || 'සඳහන් කර නැත'
+                        }
+                    };
+                }
+            }
+        }
+
+        // Default fallback if no specific config is found
+        if (!config) {
+            const latestConfigDoc = await SystemConfig.findOne().sort({ updatedAt: -1 });
+            if (latestConfigDoc) {
+                config = latestConfigDoc.toObject();
+            } else {
+                config = DEFAULT_CONFIG;
+            }
+        }
+
         res.json(config);
     } catch (err) {
         res.json(DEFAULT_CONFIG);
