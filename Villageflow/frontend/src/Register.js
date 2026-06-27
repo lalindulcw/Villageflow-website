@@ -1217,6 +1217,51 @@ function Register({ onSwitchToLogin }) {
                         }
                         .register-portal-name { font-size: 32px !important; }
                         .register-tagline { font-size: 13px !important; }
+                        
+                        /* Mobile Tabs Bar: Scroll horizontally without squishing text */
+                        .register-tabs {
+                            display: flex !important;
+                            flex-direction: row !important;
+                            flex-wrap: nowrap !important;
+                            overflow-x: auto !important;
+                            overflow-y: hidden !important;
+                            width: 100% !important;
+                            gap: 8px !important;
+                            padding: 6px !important;
+                            background-color: #F1F5F9 !important;
+                            border-radius: 12px !important;
+                            box-sizing: border-box !important;
+                            scrollbar-width: none !important; /* Firefox */
+                            -ms-overflow-style: none !important;  /* IE 10+ */
+                            -webkit-overflow-scrolling: touch !important; /* Smooth scroll on iOS */
+                        }
+                        .register-tabs::-webkit-scrollbar {
+                            display: none !important; /* Safari/Chrome */
+                        }
+                        .register-tab {
+                            flex-shrink: 0 !important;
+                            flex-grow: 1 !important;
+                            display: inline-flex !important;
+                            flex-direction: row !important;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            gap: 6px !important;
+                            padding: 10px 16px !important;
+                            white-space: nowrap !important;
+                            font-size: 13px !important;
+                            min-width: 110px !important;
+                            box-sizing: border-box !important;
+                            border-radius: 8px !important;
+                        }
+                        .register-tab span {
+                            display: inline !important;
+                            white-space: nowrap !important;
+                        }
+                        
+                        /* Mobile Input Columns: Stack to full width */
+                        .register-field-container {
+                            width: 100% !important;
+                        }
                     }
                     
                     @media (min-width: 769px) {
