@@ -323,9 +323,9 @@ function Profile() {
         }
     }, []);
 
-    const fetchOfficeData = useCallback(async () => {
+    const fetchOfficeData = useCallback(async (gnDivision) => {
         try {
-            const config = await loadPublicConfig();
+            const config = await loadPublicConfig(gnDivision);
             if (config?.general) setOfficeInfo(config.general);
             else if (config) setOfficeInfo(config);
         } catch (error) {
@@ -335,16 +335,16 @@ function Profile() {
 
     // Refresh office info when system config updates
     useEffect(() => {
-        const onConfigUpdated = () => fetchOfficeData();
+        const onConfigUpdated = () => fetchOfficeData(user?.gnDivision);
         window.addEventListener('villageflow:config-updated', onConfigUpdated);
         return () => window.removeEventListener('villageflow:config-updated', onConfigUpdated);
-    }, [fetchOfficeData]);
+    }, [fetchOfficeData, user]);
 
     useEffect(() => {
         if (user && isFirstRun.current) {
             const targetId = user._id || user.id;
             fetchUserData(targetId);
-            fetchOfficeData();
+            fetchOfficeData(user.gnDivision);
             isFirstRun.current = false;
         }
     }, [user, fetchUserData, fetchOfficeData]); 
